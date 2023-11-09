@@ -1,4 +1,4 @@
-package ali.rnp.mveye.ui.theme
+package com.alirnp.mveye.ui.theme
 
 import android.app.Activity
 import android.os.Build

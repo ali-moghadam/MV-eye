@@ -1,4 +1,4 @@
-package ali.rnp.mveye.ui.theme
+package com.alirnp.mveye.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

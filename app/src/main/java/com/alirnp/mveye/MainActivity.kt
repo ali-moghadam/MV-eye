@@ -1,4 +1,4 @@
-package ali.rnp.mveye
+package com.alirnp.mveye
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import ali.rnp.mveye.ui.theme.MVEyeTheme
+import com.alirnp.mveye.ui.theme.MVEyeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package ali.rnp.mv_eye.api
+package com.alirnp.mv_eye.api
 
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.FlowCollector

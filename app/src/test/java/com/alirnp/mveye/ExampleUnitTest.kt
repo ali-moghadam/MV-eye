@@ -1,4 +1,4 @@
-package ali.rnp.mveye
+package com.alirnp.mveye
 
 import org.junit.Test
 

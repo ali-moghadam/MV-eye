@@ -1,6 +1,6 @@
-package ali.rnp.mv_eye.impl
+package com.alirnp.mv_eye.impl
 
-import ali.rnp.mv_eye.api.StateProducer
+import com.alirnp.mv_eye.api.StateProducer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.MutableSharedFlow
