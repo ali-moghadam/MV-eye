@@ -1,6 +1,8 @@
 package com.alirnp.mv_eye.impl
 
 import com.alirnp.mv_eye.api.StateProducer
+import com.alirnp.mv_eye.contract.Event
+import com.alirnp.mv_eye.contract.UiState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -10,21 +12,21 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class StateProducerImpl<State : Any, Event : Any>(
-    initialState: State,
+class StateProducerImpl<S : UiState, E : Event>(
+    initialState: S,
     private val scope: () -> CoroutineScope,
-) : StateProducer<State, Event> {
+) : StateProducer<S, E> {
 
-    private val _events = MutableSharedFlow<Event>()
+    private val _events = MutableSharedFlow<E>()
 
     private val _uiState = MutableStateFlow(initialState)
 
-    private val events: SharedFlow<Event> = _events.asSharedFlow()
+    private val events: SharedFlow<E> = _events.asSharedFlow()
 
-    override val value: State
+    override val value: S
         get() = _uiState.value
 
-    override val values: List<State>
+    override val values: List<S>
         get() = _uiState.replayCache
 
     override val presenterHandler = PresenterHandlerImpl(
@@ -33,17 +35,17 @@ class StateProducerImpl<State : Any, Event : Any>(
         scope
     )
 
-    override fun collectEvents(flowCollector: FlowCollector<Event>) {
+    override fun collectEvents(flowCollector: FlowCollector<E>) {
         scope().launch {
             events.collect(flowCollector)
         }
     }
 
-    override fun update(function: (State) -> State) {
+    override fun update(function: (S) -> S) {
         _uiState.update(function)
     }
 
-    override fun emit(function: (State) -> State) {
+    override fun emit(function: (S) -> S) {
         scope().launch {
             val newState = function(presenterHandler.uiState.value)
             _uiState.emit(newState)
