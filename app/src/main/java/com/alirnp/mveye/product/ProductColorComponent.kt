@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.alirnp.mveye.Utils
+import com.alirnp.mveye.utils.ProductGenerator
 
 @Composable
 internal fun ProductColorComponent(
@@ -59,9 +59,11 @@ internal fun ProductColorComponent(
 @Preview
 @Composable
 private fun ProductColorComponentPreview() {
+    val product = ProductGenerator.sampleProduct()
+
     ProductColorComponent(
-        colors = Utils.product.colors,
-        selectedColor = Utils.product.colors.first(),
+        colors = product.colors,
+        selectedColor = product.colors.first(),
         onColorSelect = { }
     )
 }

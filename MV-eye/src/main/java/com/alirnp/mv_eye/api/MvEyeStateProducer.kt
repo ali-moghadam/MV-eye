@@ -9,20 +9,20 @@ import kotlinx.coroutines.flow.StateFlow
 /**
  * Interface for a type that produces a [StateFlow] of [UiState] by processing [Event]
  */
-interface StateProducer<S : UiState, E : Event> {
+interface MvEyeStateProducer<S : UiState, E : Event> {
 
     /**
-     * State handling contract in presenter
+     * State handling contract in the ui
      */
-    val presenterHandler: PresenterHandler<S, E>
+    val mvEyeStateManager: MVEyeStateManager<S, E>
 
     /**
-     * The current value of [PresenterHandler.uiState].
+     * The current value of [mvEyeStateManager.uiState].
      */
     val value: S
 
     /**
-     * The previous values of [PresenterHandler.uiState].
+     * The previous values of [mvEyeStateManager.uiState].
      */
     val values: List<S>
 

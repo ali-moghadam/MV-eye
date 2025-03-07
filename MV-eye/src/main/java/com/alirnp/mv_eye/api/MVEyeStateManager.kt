@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.StateFlow
 /**
  * A class which can sends user events and collect the UI state.
  */
-interface PresenterHandler<S: UiState, E : Event> {
+interface MVEyeStateManager<S: UiState, E : Event> {
     /**
      * The Read-only state which describes the complete view state.
      */

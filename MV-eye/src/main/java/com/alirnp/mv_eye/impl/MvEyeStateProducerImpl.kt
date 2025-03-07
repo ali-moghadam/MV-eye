@@ -1,6 +1,6 @@
 package com.alirnp.mv_eye.impl
 
-import com.alirnp.mv_eye.api.StateProducer
+import com.alirnp.mv_eye.api.MvEyeStateProducer
 import com.alirnp.mv_eye.contract.Event
 import com.alirnp.mv_eye.contract.UiState
 import kotlinx.coroutines.CoroutineScope
@@ -12,10 +12,10 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class StateProducerImpl<S : UiState, E : Event>(
+class MvEyeStateProducerImpl<S : UiState, E : Event>(
     initialState: S,
     private val scope: () -> CoroutineScope,
-) : StateProducer<S, E> {
+) : MvEyeStateProducer<S, E> {
 
     private val _events = MutableSharedFlow<E>()
 
@@ -29,7 +29,7 @@ class StateProducerImpl<S : UiState, E : Event>(
     override val values: List<S>
         get() = _uiState.replayCache
 
-    override val presenterHandler = PresenterHandlerImpl(
+    override val mvEyeStateManager = MVEyeStateManagerImpl(
         _uiState,
         _events,
         scope
@@ -47,7 +47,7 @@ class StateProducerImpl<S : UiState, E : Event>(
 
     override fun emit(function: (S) -> S) {
         scope().launch {
-            val newState = function(presenterHandler.uiState.value)
+            val newState = function(mvEyeStateManager.uiState.value)
             _uiState.emit(newState)
         }
     }

@@ -3,26 +3,21 @@ package com.alirnp.mveye.product
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.alirnp.mv_eye.impl.StateProducerImpl
-import com.alirnp.mveye.Utils
+import com.alirnp.mv_eye.impl.MvEyeStateProducerImpl
 import com.alirnp.mveye.product.mvi.ProductEvent
 import com.alirnp.mveye.product.mvi.ProductUiState
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.alirnp.mveye.utils.ProductGenerator
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class ProductViewModel : ViewModel() {
 
-    private val productId: Long = 1
-
-    private val stateProducer = StateProducerImpl<ProductUiState, ProductEvent>(
+    private val stateProducer = MvEyeStateProducerImpl<ProductUiState, ProductEvent>(
         initialState = ProductUiState(),
-        scope = { CoroutineScope(Dispatchers.IO) }
+        scope = { viewModelScope }
     )
 
-    val presenterHandler = stateProducer.presenterHandler
-
+    val stateManager = stateProducer.mvEyeStateManager
 
     init {
         stateProducer.collectEvents { event ->
@@ -33,7 +28,7 @@ class ProductViewModel : ViewModel() {
             }
         }
 
-        fetchProductPriceById(productId = productId)
+        fetchProductPriceById(productId = ProductGenerator.DEFAULT_PRODUCT_ID)
     }
 
 
@@ -66,12 +61,13 @@ class ProductViewModel : ViewModel() {
                 uiState.copy(loading = true)
             }
 
+            val product = ProductGenerator.product(productId)
             // Simulate a network call
             delay(800L)
 
             stateProducer.update { uiState ->
                 uiState.copy(
-                    product = Utils.product,
+                    product = product,
                     loading = false
                 )
             }
