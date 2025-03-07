@@ -13,9 +13,8 @@
         android:theme="@style/Theme.MVEye"
         tools:targetApi="31">
         <activity
-            android:name="com.alirnp.mveye.MainActivity"
+            android:name="com.ar.mveye.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.MVEye">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
