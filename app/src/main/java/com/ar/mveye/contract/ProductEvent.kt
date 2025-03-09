@@ -1,4 +1,4 @@
-package com.ar.mveye.product.mvi
+package com.ar.mveye.contract
 
 import androidx.compose.ui.graphics.Color
 import com.ar.mv_eye.contract.Event

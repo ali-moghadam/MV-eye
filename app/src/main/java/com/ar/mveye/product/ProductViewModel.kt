@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ar.mv_eye.impl.MvEyeStateProducerImpl
-import com.ar.mveye.product.mvi.ProductEvent
-import com.ar.mveye.product.mvi.ProductUiState
+import com.ar.mveye.contract.ProductEvent
+import com.ar.mveye.contract.ProductUiState
 import com.ar.mveye.utils.ProductGenerator
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

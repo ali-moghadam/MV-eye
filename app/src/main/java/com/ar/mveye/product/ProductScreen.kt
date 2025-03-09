@@ -32,26 +32,26 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.ar.mv_eye.api.MVEyeStateManager
-import com.ar.mveye.product.mvi.ProductEvent
-import com.ar.mveye.product.mvi.ProductUiState
+import com.ar.mveye.contract.ProductEvent
+import com.ar.mveye.contract.ProductUiState
 
 @Composable
 internal fun ProductScreen(
-    MVEyeStateManager: MVEyeStateManager<ProductUiState, ProductEvent>,
+    mvEyeStateManager: MVEyeStateManager<ProductUiState, ProductEvent>,
 ) {
-    val uiState by MVEyeStateManager.uiState.collectAsState()
+    val uiState by mvEyeStateManager.uiState.collectAsState()
 
     val onIncreaseClick = remember {
-        { MVEyeStateManager.onEvent(ProductEvent.IncreaseCount) }
+        { mvEyeStateManager.onEvent(ProductEvent.IncreaseCount) }
     }
 
     val onDecreaseClick = remember {
-        { MVEyeStateManager.onEvent(ProductEvent.DecreaseCount) }
+        { mvEyeStateManager.onEvent(ProductEvent.DecreaseCount) }
     }
 
     val onColorSelected = remember {
         { color: Color ->
-            MVEyeStateManager.onEvent(ProductEvent.SelectColor(color))
+            mvEyeStateManager.onEvent(ProductEvent.SelectColor(color))
         }
     }
 
