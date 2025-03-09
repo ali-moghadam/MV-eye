@@ -1,4 +1,4 @@
-package com.ar.mveye.product.model
+package com.ar.mveye.model
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color

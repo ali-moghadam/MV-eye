@@ -1,4 +1,4 @@
-package com.ar.mveye.product
+package com.ar.mveye.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

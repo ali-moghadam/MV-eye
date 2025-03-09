@@ -2,7 +2,7 @@ package com.ar.mveye.utils
 
 import ali.rnp.mveye.R
 import androidx.compose.ui.graphics.Color
-import com.ar.mveye.product.model.Product
+import com.ar.mveye.model.Product
 
 object ProductGenerator {
 
@@ -37,12 +37,12 @@ object ProductGenerator {
             ),
             Product(
                 id = 1,
-                name = "Beats Studio Pro",
-                price = 349.99,
+                name = "Beats Studio Pro 2",
+                price = 390.99,
                 colors = listOf(
-                    Color.Black,
+                    Color.Gray,
                     Color.Blue,
-                    Color.Red,
+                    Color.Green,
                 ),
                 image = R.drawable.headphone
             )

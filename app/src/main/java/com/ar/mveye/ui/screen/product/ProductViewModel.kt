@@ -1,4 +1,4 @@
-package com.ar.mveye.product
+package com.ar.mveye.ui.screen.product
 
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel

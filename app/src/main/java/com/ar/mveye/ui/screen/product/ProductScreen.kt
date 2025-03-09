@@ -1,4 +1,4 @@
-package com.ar.mveye.product
+package com.ar.mveye.ui.screen.product
 
 import ali.rnp.mveye.R
 import androidx.compose.foundation.Image
@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.ar.mv_eye.api.MVEyeStateManager
 import com.ar.mveye.contract.ProductEvent
 import com.ar.mveye.contract.ProductUiState
+import com.ar.mveye.ui.component.ProductColorComponent
 
 @Composable
 internal fun ProductScreen(
