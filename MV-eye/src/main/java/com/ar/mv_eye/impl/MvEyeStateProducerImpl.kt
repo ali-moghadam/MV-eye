@@ -29,7 +29,7 @@ class MvEyeStateProducerImpl<S : UiState, E : Event>(
     override val values: List<S>
         get() = _uiState.replayCache
 
-    override val mvEyeStateManager = MVEyeStateManagerImpl(
+    override val mvEyeStateManager = MvEyeStateManagerImpl(
         _uiState,
         _events,
         scope

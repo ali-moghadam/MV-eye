@@ -31,14 +31,14 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.ar.mv_eye.api.MVEyeStateManager
+import com.ar.mv_eye.api.MvEyeStateManager
 import com.ar.mveye.contract.ProductEvent
 import com.ar.mveye.contract.ProductUiState
 import com.ar.mveye.ui.component.ProductColorComponent
 
 @Composable
 internal fun ProductScreen(
-    mvEyeStateManager: MVEyeStateManager<ProductUiState, ProductEvent>,
+    mvEyeStateManager: MvEyeStateManager<ProductUiState, ProductEvent>,
 ) {
     val uiState by mvEyeStateManager.uiState.collectAsState()
 

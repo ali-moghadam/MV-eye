@@ -14,7 +14,7 @@ interface MvEyeStateProducer<S : UiState, E : Event> {
     /**
      * State handling contract in the ui
      */
-    val mvEyeStateManager: MVEyeStateManager<S, E>
+    val mvEyeStateManager: MvEyeStateManager<S, E>
 
     /**
      * The current value of [mvEyeStateManager.uiState].
