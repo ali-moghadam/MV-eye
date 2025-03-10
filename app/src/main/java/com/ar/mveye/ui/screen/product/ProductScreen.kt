@@ -31,28 +31,28 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.ar.mv_eye.api.MvEyeStateManager
+import com.ar.mv_eye.api.MvStateManager
 import com.ar.mveye.contract.ProductEvent
 import com.ar.mveye.contract.ProductUiState
 import com.ar.mveye.ui.component.ProductColorComponent
 
 @Composable
 internal fun ProductScreen(
-    mvEyeStateManager: MvEyeStateManager<ProductUiState, ProductEvent>,
+    mvStateManager: MvStateManager<ProductUiState, ProductEvent>,
 ) {
-    val uiState by mvEyeStateManager.uiState.collectAsState()
+    val uiState by mvStateManager.uiState.collectAsState()
 
     val onIncreaseClick = remember {
-        { mvEyeStateManager.onEvent(ProductEvent.IncreaseCount) }
+        { mvStateManager.onEvent(ProductEvent.IncreaseCount) }
     }
 
     val onDecreaseClick = remember {
-        { mvEyeStateManager.onEvent(ProductEvent.DecreaseCount) }
+        { mvStateManager.onEvent(ProductEvent.DecreaseCount) }
     }
 
     val onColorSelected = remember {
         { color: Color ->
-            mvEyeStateManager.onEvent(ProductEvent.SelectColor(color))
+            mvStateManager.onEvent(ProductEvent.SelectColor(color))
         }
     }
 

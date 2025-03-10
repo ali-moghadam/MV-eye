@@ -1,8 +1,8 @@
 package com.ar.mv_eye.impl
 
-import com.ar.mv_eye.api.MvEyeStateProducer
-import com.ar.mv_eye.contract.Event
-import com.ar.mv_eye.contract.UiState
+import com.ar.mv_eye.api.MvStateProducer
+import com.ar.mv_eye.contract.MvEvent
+import com.ar.mv_eye.contract.MvUiState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -12,10 +12,10 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class MvEyeStateProducerImpl<S : UiState, E : Event>(
+class MvStateProducerImpl<S : MvUiState, E : MvEvent>(
     initialState: S,
     private val scope: () -> CoroutineScope,
-) : MvEyeStateProducer<S, E> {
+) : MvStateProducer<S, E> {
 
     private val _events = MutableSharedFlow<E>()
 
@@ -29,7 +29,7 @@ class MvEyeStateProducerImpl<S : UiState, E : Event>(
     override val values: List<S>
         get() = _uiState.replayCache
 
-    override val mvEyeStateManager = MvEyeStateManagerImpl(
+    override val mvStateManager = MvStateManagerImpl(
         _uiState,
         _events,
         scope
@@ -47,7 +47,7 @@ class MvEyeStateProducerImpl<S : UiState, E : Event>(
 
     override fun emit(function: (S) -> S) {
         scope().launch {
-            val newState = function(mvEyeStateManager.uiState.value)
+            val newState = function(mvStateManager.uiState.value)
             _uiState.emit(newState)
         }
     }
