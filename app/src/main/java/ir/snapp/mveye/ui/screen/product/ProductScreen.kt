@@ -1,6 +1,5 @@
 package ir.snapp.mveye.ui.screen.product
 
-import ali.rnp.mveye.R
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
@@ -31,6 +30,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import ir.snapp.mveye.R
 import ir.snapp.mveye.api.MvStateConsumer
 import ir.snapp.mveye.contract.ProductEvent
 import ir.snapp.mveye.contract.ProductUiState

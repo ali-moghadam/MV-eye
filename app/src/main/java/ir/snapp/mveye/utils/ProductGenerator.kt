@@ -1,7 +1,7 @@
 package ir.snapp.mveye.utils
 
-import ali.rnp.mveye.R
 import androidx.compose.ui.graphics.Color
+import ir.snapp.mveye.R
 import ir.snapp.mveye.model.Product
 
 object ProductGenerator {
