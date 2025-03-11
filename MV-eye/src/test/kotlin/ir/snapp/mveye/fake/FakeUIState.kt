@@ -1,4 +1,4 @@
-package ir.snapp.fake
+package ir.snapp.mveye.fake
 
 import ir.snapp.mveye.contract.MvUiState
 

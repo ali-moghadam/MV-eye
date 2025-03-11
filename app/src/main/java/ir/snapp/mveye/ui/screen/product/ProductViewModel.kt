@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import ir.snapp.mveye.impl.MvStateManagerImpl
 import ir.snapp.mveye.contract.ProductEvent
 import ir.snapp.mveye.contract.ProductUiState
+import ir.snapp.mveye.utils.ProductGenerator
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -27,7 +28,7 @@ class ProductViewModel : ViewModel() {
             }
         }
 
-        fetchProductPriceById(productId = ir.snapp.mveye.utils.ProductGenerator.DEFAULT_PRODUCT_ID)
+        fetchProductPriceById(productId = ProductGenerator.DEFAULT_PRODUCT_ID)
     }
 
 
@@ -60,7 +61,7 @@ class ProductViewModel : ViewModel() {
                 uiState.copy(loading = true)
             }
 
-            val product = ir.snapp.mveye.utils.ProductGenerator.product(productId)
+            val product = ProductGenerator.product(productId)
             // Simulate a network call
             delay(800L)
 

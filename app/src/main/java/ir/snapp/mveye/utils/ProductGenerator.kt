@@ -6,23 +6,18 @@ import ir.snapp.mveye.model.Product
 
 object ProductGenerator {
 
-    const val DEFAULT_PRODUCT_ID : Long = 1
+    const val DEFAULT_PRODUCT_ID: Long = 0
 
-    fun sampleProduct(): Product {
-        return Product(
-            id = DEFAULT_PRODUCT_ID,
-            name = "Beats Studio Pro",
-            price = 349.99,
-            colors = listOf(
-                Color.Black,
-                Color.Blue,
-                Color.Red,
-            ),
-            image = R.drawable.headphone
-        )
+    fun product(): Product {
+        return allProducts().first()
     }
 
-    fun allProducts() : List<Product> {
+    fun product(productId: Long): Product {
+        return allProducts()
+            .find { it.id == productId } ?: product()
+    }
+
+    private fun allProducts(): List<Product> {
         return listOf(
             Product(
                 id = 0,
@@ -38,7 +33,7 @@ object ProductGenerator {
             Product(
                 id = 1,
                 name = "Beats Studio Pro 2",
-                price = 390.99,
+                price = 200.99,
                 colors = listOf(
                     Color.Gray,
                     Color.Blue,
@@ -47,10 +42,5 @@ object ProductGenerator {
                 image = R.drawable.headphone
             )
         )
-    }
-
-    fun product(productId: Long) : Product {
-        return allProducts()
-            .find { it.id == productId } ?: sampleProduct()
     }
 }

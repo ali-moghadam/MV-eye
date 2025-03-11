@@ -1,10 +1,10 @@
-package ir.snapp
+package ir.snapp.mveye
 
 import ir.snapp.mveye.api.MvStateConsumer
 import ir.snapp.mveye.impl.MvStateManagerImpl
-import ir.snapp.fake.FakeEvent
-import ir.snapp.fake.FakeUIState
-import ir.snapp.fake.FakeViewModel
+import ir.snapp.mveye.fake.FakeEvent
+import ir.snapp.mveye.fake.FakeUIState
+import ir.snapp.mveye.fake.FakeViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
