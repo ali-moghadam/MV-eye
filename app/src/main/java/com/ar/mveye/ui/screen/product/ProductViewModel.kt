@@ -3,7 +3,7 @@ package com.ar.mveye.ui.screen.product
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ar.mv_eye.impl.MvStateProducerImpl
+import com.ar.mv_eye.impl.MvStateManagerImpl
 import com.ar.mveye.contract.ProductEvent
 import com.ar.mveye.contract.ProductUiState
 import com.ar.mveye.utils.ProductGenerator
@@ -12,12 +12,12 @@ import kotlinx.coroutines.launch
 
 class ProductViewModel : ViewModel() {
 
-    private val stateProducer = MvStateProducerImpl<ProductUiState, ProductEvent>(
+    private val stateProducer = MvStateManagerImpl<ProductUiState, ProductEvent>(
         initialState = ProductUiState(),
         scope = { viewModelScope }
     )
 
-    val stateManager = stateProducer.mvStateManager
+    val stateManager = stateProducer.stateConsumer
 
     init {
         stateProducer.collectEvents { event ->
