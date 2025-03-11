@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "ali.rnp.mveye"
+    namespace = "ir.snapp.mveye"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "ali.rnp.mveye"
+        applicationId = "ir.snapp.mveye.demo"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
